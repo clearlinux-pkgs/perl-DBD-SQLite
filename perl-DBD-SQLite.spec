@@ -4,16 +4,19 @@
 #
 Name     : perl-DBD-SQLite
 Version  : 1.62
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/DBD-SQLite-1.62.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/DBD-SQLite-1.62.tar.gz
-Summary  : Self-contained RDBMS in a DBI driver
+Summary  : 'Self Contained SQLite RDBMS in a DBI Driver'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-2.0
 Requires: perl-DBD-SQLite-lib = %{version}-%{release}
 Requires: perl-DBD-SQLite-license = %{version}-%{release}
+Requires: sqlite-autoconf-lib
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Bundle::DBI)
+BuildRequires : sqlite-autoconf-dev
+Patch1: 0001-Enable-build-link-with-system-sqlite3-lib.patch
 
 %description
 NAME
@@ -52,6 +55,7 @@ license components for the perl-DBD-SQLite package.
 
 %prep
 %setup -q -n DBD-SQLite-1.62
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
