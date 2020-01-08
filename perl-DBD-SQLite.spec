@@ -4,14 +4,14 @@
 #
 Name     : perl-DBD-SQLite
 Version  : 1.64
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/DBD-SQLite-1.64.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/DBD-SQLite-1.64.tar.gz
-Summary  : Self-contained RDBMS in a DBI driver
+Summary  : 'Self Contained SQLite RDBMS in a DBI Driver'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-2.0
-Requires: perl-DBD-SQLite-lib = %{version}-%{release}
 Requires: perl-DBD-SQLite-license = %{version}-%{release}
+Requires: perl-DBD-SQLite-perl = %{version}-%{release}
 Requires: sqlite-autoconf-lib
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Bundle::DBI)
@@ -28,22 +28,11 @@ my $dbh = DBI->connect("dbi:SQLite:dbname=$dbfile","","");
 %package dev
 Summary: dev components for the perl-DBD-SQLite package.
 Group: Development
-Requires: perl-DBD-SQLite-lib = %{version}-%{release}
 Provides: perl-DBD-SQLite-devel = %{version}-%{release}
-Requires: perl-DBD-SQLite = %{version}-%{release}
 Requires: perl-DBD-SQLite = %{version}-%{release}
 
 %description dev
 dev components for the perl-DBD-SQLite package.
-
-
-%package lib
-Summary: lib components for the perl-DBD-SQLite package.
-Group: Libraries
-Requires: perl-DBD-SQLite-license = %{version}-%{release}
-
-%description lib
-lib components for the perl-DBD-SQLite package.
 
 
 %package license
@@ -54,8 +43,18 @@ Group: Default
 license components for the perl-DBD-SQLite package.
 
 
+%package perl
+Summary: perl components for the perl-DBD-SQLite package.
+Group: Default
+Requires: perl-DBD-SQLite = %{version}-%{release}
+
+%description perl
+perl components for the perl-DBD-SQLite package.
+
+
 %prep
 %setup -q -n DBD-SQLite-1.64
+cd %{_builddir}/DBD-SQLite-1.64
 %patch1 -p1
 
 %build
@@ -81,7 +80,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-DBD-SQLite
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-DBD-SQLite/LICENSE
+cp %{_builddir}/DBD-SQLite-1.64/LICENSE %{buildroot}/usr/share/package-licenses/perl-DBD-SQLite/ac65ff6b8120c21db8e28bbfbf89a2da90009f97
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -94,17 +93,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/DBD/SQLite.pm
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/DBD/SQLite/Constants.pm
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/DBD/SQLite/Cookbook.pod
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/DBD/SQLite/Fulltext_search.pod
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/DBD/SQLite/GetInfo.pm
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/DBD/SQLite/VirtualTable.pm
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/DBD/SQLite/VirtualTable/FileContent.pm
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/DBD/SQLite/VirtualTable/PerlData.pm
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/share/dist/DBD-SQLite/sqlite3.c
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/share/dist/DBD-SQLite/sqlite3.h
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/share/dist/DBD-SQLite/sqlite3ext.h
 
 %files dev
 %defattr(-,root,root,-)
@@ -116,10 +104,21 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/share/man/man3/DBD::SQLite::VirtualTable::FileContent.3
 /usr/share/man/man3/DBD::SQLite::VirtualTable::PerlData.3
 
-%files lib
-%defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/DBD/SQLite/SQLite.so
-
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-DBD-SQLite/LICENSE
+/usr/share/package-licenses/perl-DBD-SQLite/ac65ff6b8120c21db8e28bbfbf89a2da90009f97
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/DBD/SQLite.pm
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/DBD/SQLite/Constants.pm
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/DBD/SQLite/Cookbook.pod
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/DBD/SQLite/Fulltext_search.pod
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/DBD/SQLite/GetInfo.pm
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/DBD/SQLite/VirtualTable.pm
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/DBD/SQLite/VirtualTable/FileContent.pm
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/DBD/SQLite/VirtualTable/PerlData.pm
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/auto/DBD/SQLite/SQLite.so
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/auto/share/dist/DBD-SQLite/sqlite3.c
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/auto/share/dist/DBD-SQLite/sqlite3.h
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/auto/share/dist/DBD-SQLite/sqlite3ext.h
