@@ -110,15 +110,15 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/DBD/SQLite.pm
-/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/DBD/SQLite/Constants.pm
-/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/DBD/SQLite/Cookbook.pod
-/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/DBD/SQLite/Fulltext_search.pod
-/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/DBD/SQLite/GetInfo.pm
-/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/DBD/SQLite/VirtualTable.pm
-/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/DBD/SQLite/VirtualTable/FileContent.pm
-/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/DBD/SQLite/VirtualTable/PerlData.pm
-/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/auto/DBD/SQLite/SQLite.so
-/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/auto/share/dist/DBD-SQLite/sqlite3.c
-/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/auto/share/dist/DBD-SQLite/sqlite3.h
-/usr/lib/perl5/vendor_perl/5.32.1/x86_64-linux-thread-multi/auto/share/dist/DBD-SQLite/sqlite3ext.h
+/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/DBD/SQLite.pm
+/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/DBD/SQLite/Constants.pm
+/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/DBD/SQLite/Cookbook.pod
+/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/DBD/SQLite/Fulltext_search.pod
+/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/DBD/SQLite/GetInfo.pm
+/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/DBD/SQLite/VirtualTable.pm
+/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/DBD/SQLite/VirtualTable/FileContent.pm
+/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/DBD/SQLite/VirtualTable/PerlData.pm
+/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/auto/DBD/SQLite/SQLite.so
+/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/auto/share/dist/DBD-SQLite/sqlite3.c
+/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/auto/share/dist/DBD-SQLite/sqlite3.h
+/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/auto/share/dist/DBD-SQLite/sqlite3ext.h
