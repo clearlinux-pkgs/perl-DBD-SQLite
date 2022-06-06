@@ -1,4 +1,4 @@
-From 04fbc0fe10996322ec36f3c4d92cdc8a82a13a13 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: "Choong, Yin Thong" <yin.thong.choong@intel.com>
 Date: Tue, 2 Jul 2019 14:50:28 +0000
 Subject: [PATCH] Enable build link with system sqlite3 lib
@@ -9,7 +9,7 @@ Signed-off-by: Choong, Yin Thong <yin.thong.choong@intel.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/Makefile.PL b/Makefile.PL
-index d2c0f45..7d8b033 100644
+index 8771fe1..0bbac12 100644
 --- a/Makefile.PL
 +++ b/Makefile.PL
 @@ -128,8 +128,8 @@ SCOPE: {
@@ -23,6 +23,3 @@ index d2c0f45..7d8b033 100644
  	require File::Spec;
  	if ( $sqlite_base = (grep(/SQLITE_LOCATION=.*/, @ARGV))[0] ) {
  		$sqlite_base =~ /=(.*)/;
--- 
-2.20.0
-

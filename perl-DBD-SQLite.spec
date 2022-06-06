@@ -4,7 +4,7 @@
 #
 Name     : perl-DBD-SQLite
 Version  : 1.70
-Release  : 26
+Release  : 27
 URL      : https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/DBD-SQLite-1.70.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/DBD-SQLite-1.70.tar.gz
 Summary  : 'Self Contained SQLite RDBMS in a DBI Driver'
@@ -17,6 +17,7 @@ BuildRequires : buildreq-cpan
 BuildRequires : perl(Bundle::DBI)
 BuildRequires : sqlite-autoconf-dev
 Patch1: 0001-Enable-build-link-with-system-sqlite3-lib.patch
+Patch2: backport-Tweak-for-3.37.0.patch
 
 %description
 NAME
@@ -56,6 +57,7 @@ perl components for the perl-DBD-SQLite package.
 %setup -q -n DBD-SQLite-1.70
 cd %{_builddir}/DBD-SQLite-1.70
 %patch1 -p1
+%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -110,15 +112,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/DBD/SQLite.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/DBD/SQLite/Constants.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/DBD/SQLite/Cookbook.pod
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/DBD/SQLite/Fulltext_search.pod
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/DBD/SQLite/GetInfo.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/DBD/SQLite/VirtualTable.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/DBD/SQLite/VirtualTable/FileContent.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/DBD/SQLite/VirtualTable/PerlData.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/auto/DBD/SQLite/SQLite.so
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/auto/share/dist/DBD-SQLite/sqlite3.c
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/auto/share/dist/DBD-SQLite/sqlite3.h
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/auto/share/dist/DBD-SQLite/sqlite3ext.h
+/usr/lib/perl5/*
