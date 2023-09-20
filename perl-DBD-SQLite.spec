@@ -4,10 +4,10 @@
 # Using build pattern: cpan
 #
 Name     : perl-DBD-SQLite
-Version  : 1.72
-Release  : 32
-URL      : https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/DBD-SQLite-1.72.tar.gz
-Source0  : https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/DBD-SQLite-1.72.tar.gz
+Version  : 1.74
+Release  : 33
+URL      : https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/DBD-SQLite-1.74.tar.gz
+Source0  : https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/DBD-SQLite-1.74.tar.gz
 Summary  : 'Self Contained SQLite RDBMS in a DBI Driver'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-2.0
@@ -58,10 +58,13 @@ perl components for the perl-DBD-SQLite package.
 
 
 %prep
-%setup -q -n DBD-SQLite-1.72
-cd %{_builddir}/DBD-SQLite-1.72
+%setup -q -n DBD-SQLite-1.74
+cd %{_builddir}/DBD-SQLite-1.74
 %patch -P 1 -p1
 %patch -P 2 -p1
+pushd ..
+cp -a DBD-SQLite-1.74 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -96,6 +99,7 @@ find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
 find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %{_fixperms} %{buildroot}/*
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
