@@ -5,7 +5,7 @@
 #
 Name     : perl-DBD-SQLite
 Version  : 1.74
-Release  : 34
+Release  : 35
 URL      : https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/DBD-SQLite-1.74.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/DBD-SQLite-1.74.tar.gz
 Summary  : 'Self Contained SQLite RDBMS in a DBI Driver'
